@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Style.uss?fileID=7433441132597879392&amp;guid=e3f2c1930d70cec499c2d4f34521f2df&amp;type=3#Style" />
+    <ui:VisualElement name="background" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+        <ui:VisualElement name="main-container" style="background-color: rgb(161, 219, 229); border-left-width: 6px; border-right-width: 6px; border-top-width: 6px; border-bottom-width: 6px; border-left-color: rgb(63, 147, 189); border-right-color: rgb(63, 147, 189); border-top-color: rgb(63, 147, 189); border-bottom-color: rgb(63, 147, 189); align-items: center; justify-content: space-between; width: 300px; height: 340px; padding-top: 0;">
+            <ui:Button display-tooltip-when-elided="true" name="close-btn" class="close-btn-style" style="position: absolute; right: 8px; top: 8px; background-image: url(&apos;project://database/Assets/40+%20Simple%20Icons%20-%20Free/Cross_Simple_Icons_UI_colored.png?fileID=2800000&amp;guid=454bf7d499f9d7541a376dc088d6129a&amp;type=3#Cross_Simple_Icons_UI_colored&apos;); width: 17px; height: 17px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+            <ui:VisualElement name="inner-container" style="margin-top: 0; padding-top: 38px; align-items: center; justify-content: center;">
+                <ui:Label text="Игра окончена" display-tooltip-when-elided="true" name="finish-title" style="-unity-font-style: bold; font-size: 23px; -unity-text-align: middle-center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 10px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Новая игра" display-tooltip-when-elided="true" name="new-game-btn" class="main-menu-btn-style" style="margin-top: 11px;" />
+                <ui:Button text="Продолжить" display-tooltip-when-elided="true" name="continue-btn" class="main-menu-btn-style" />
+            </ui:VisualElement>
+            <ui:VisualElement name="speed-container" style="position: absolute; right: 100px; bottom: 2px; justify-content: flex-end; align-items: flex-end; margin-bottom: 4px;">
+                <ui:SliderInt picking-mode="Ignore" value="3" high-value="5" direction="Vertical" low-value="1" show-input-field="false" inverted="false" name="speed-slider" style="height: 60px; margin-bottom: 2px; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                <ui:Button text="u" display-tooltip-when-elided="true" name="speed-btn" tooltip="Скорость" class="settings-btn-style" style="border-left-color: rgb(110, 62, 67); border-right-color: rgb(110, 62, 67); border-top-color: rgb(110, 62, 67); border-bottom-color: rgb(110, 62, 67); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="accel-container" style="position: absolute; right: 54px; bottom: 2px; justify-content: flex-end; align-items: flex-end; margin-bottom: 4px;">
+                <ui:SliderInt picking-mode="Ignore" value="3" high-value="5" direction="Vertical" low-value="1" show-input-field="false" inverted="false" name="accel-slider" style="height: 60px; margin-bottom: 2px; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                <ui:Button text="a" display-tooltip-when-elided="true" name="accel-btn" tooltip="Ускорение" class="settings-btn-style" style="border-left-color: rgb(110, 62, 67); border-right-color: rgb(110, 62, 67); border-top-color: rgb(110, 62, 67); border-bottom-color: rgb(110, 62, 67); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="mouse-zone-container" style="position: absolute; right: 8px; bottom: 2px; justify-content: flex-end; align-items: flex-end; margin-bottom: 4px;">
+                <ui:SliderInt picking-mode="Ignore" value="3" high-value="5" direction="Vertical" low-value="1" show-input-field="false" inverted="false" name="mouse-zone-slider" style="height: 60px; margin-bottom: 2px; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                <ui:Button text="s" display-tooltip-when-elided="false" name="mouse-zone-btn" tooltip="Безопасное расстояние" class="no-font-settings-btn-style" style="-unity-text-align: lower-center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -16,8 +16,8 @@ public class BallController : MonoBehaviour
     public GameObject BottomCheck;
     public GameObject Top;
     public GameObject TopCheck;
-
-    public bool CanRun;
+    
+    public bool CanMove;
     /// <summary>
     /// В процессе перестроения движения
     /// </summary>
@@ -32,7 +32,7 @@ public class BallController : MonoBehaviour
 
     public void ResetPosition(Vector3 position)
     {
-        CanRun = false;
+        CanMove = false;
         transform.position = position;
         ResetTranslationParams();
     }
@@ -45,7 +45,7 @@ public class BallController : MonoBehaviour
             return;
         }
 
-        if (!CanRun)
+        if (!CanMove)
         {
             return;
         }
@@ -81,7 +81,7 @@ public class BallController : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (!CanRun)
+        if (!CanMove)
         {
             return;
         }
@@ -139,7 +139,7 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!CanRun)
+        if (!CanMove)
         {
             return;
         }
