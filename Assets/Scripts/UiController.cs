@@ -1,7 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.Model;
-using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -40,14 +38,16 @@ public class UiController : MonoBehaviour
         speedSlider = root.Q<SliderInt>("speed-slider");
         accelerationSlider = root.Q<SliderInt>("accel-slider");
         mouseZoneSlider = root.Q<SliderInt>("mouse-zone-slider");
+        var mainContainer = root.Q<VisualElement>("main-container");
         HideSettingsSliders();
-        speedBtn.clicked += () => DisplaySlider(speedSlider);
-        accelerationBtn.clicked += () => DisplaySlider(accelerationSlider);
-        mouseZoneBtn.clicked += () => DisplaySlider(mouseZoneSlider);
-        SerializedObject so = new SerializedObject(GameController.BallController);
-        speedSlider.BindProperty(so.FindProperty("Speed"));
-        accelerationSlider.BindProperty(so.FindProperty("MinAcceleration"));
-        mouseZoneSlider.BindProperty(so.FindProperty("SecureMouseDistance"));
+        speedBtn.RegisterCallback<MouseOverEvent>(evt => speedSlider.visible = true);
+        accelerationBtn.RegisterCallback<MouseOverEvent>(evt => accelerationSlider.visible = true);
+        mouseZoneBtn.RegisterCallback<MouseOverEvent>(evt => mouseZoneSlider.visible = true);
+        speedSlider.RegisterValueChangedCallback(x=>GameController.BallController.Speed = x.newValue);
+        accelerationSlider.RegisterValueChangedCallback(x => GameController.BallController.MinAcceleration = x.newValue);
+        mouseZoneSlider.RegisterValueChangedCallback(x => GameController.BallController.SecureMouseDistance = x.newValue);
+
+        mainContainer.RegisterCallback<MouseUpEvent>(evt => HideSettingsSliders());
     }
 
     void HideSettingsSliders()
