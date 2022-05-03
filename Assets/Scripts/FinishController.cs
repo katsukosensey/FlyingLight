@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Model;
+using Assets.Scripts.Model;
 using UnityEngine;
 
 namespace Assets.Scripts

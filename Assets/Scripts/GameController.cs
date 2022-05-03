@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assets.Scripts.Configuration;
 using Assets.Scripts.Model;
 using UnityEngine;

@@ -8,11 +8,11 @@ public class BallController : MonoBehaviour
     private Random _random;
     private float _currentAcceleration;
     /// <summary>
-    /// В процессе перестроения движения
+    /// Р’ РїСЂРѕС†РµСЃСЃРµ РїРµСЂРµСЃС‚СЂРѕРµРЅРёСЏ РґРІРёР¶РµРЅРёСЏ
     /// </summary>
     private bool _isAvoiding;
     /// <summary>
-    /// Пойман курсором
+    /// РџРѕР№РјР°РЅ РєСѓСЂСЃРѕСЂРѕРј
     /// </summary>
     private bool _isCatchedByMouse;
 
@@ -113,7 +113,7 @@ public class BallController : MonoBehaviour
         transform.Translate(translation);
     }
     /// <summary>
-    /// Проверка безопасности расстояния до курсора
+    /// РџСЂРѕРІРµСЂРєР° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РґРѕ РєСѓСЂСЃРѕСЂР°
     /// </summary>
     /// <returns></returns>
     public bool IsMouseDistanceSecure()
@@ -125,7 +125,7 @@ public class BallController : MonoBehaviour
     }
 
     /// <summary>
-    /// Отталкивание от объекта столкновения (курсор, граница)
+    /// РћС‚С‚Р°Р»РєРёРІР°РЅРёРµ РѕС‚ РѕР±СЉРµРєС‚Р° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ (РєСѓСЂСЃРѕСЂ, РіСЂР°РЅРёС†Р°)
     /// </summary>
     void MoveByPush()
     {
@@ -138,7 +138,7 @@ public class BallController : MonoBehaviour
         Move();
     }
     /// <summary>
-    /// Перерасчет параметров движения от курсора 
+    /// РџРµСЂРµСЂР°СЃС‡РµС‚ РїР°СЂР°РјРµС‚СЂРѕРІ РґРІРёР¶РµРЅРёСЏ РѕС‚ РєСѓСЂСЃРѕСЂР° 
     /// </summary>
     public void AvoidEnemyMouse()
     {
@@ -149,7 +149,7 @@ public class BallController : MonoBehaviour
         _currentAcceleration = MinAcceleration;
     }
     /// <summary>
-    /// Движение от границы
+    /// Р”РІРёР¶РµРЅРёРµ РѕС‚ РіСЂР°РЅРёС†С‹
     /// </summary>
     public void AvoidBorder()
     {

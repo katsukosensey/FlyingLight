@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Configuration;
+using Assets.Scripts.Configuration;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.Ui

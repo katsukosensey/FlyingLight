@@ -8,7 +8,7 @@ public class UiController : MonoBehaviour
 {
     private VisualElement _uiRoot;
     /// <summary>
-    /// Контроллер визуальных элементов настроек игры
+    /// РљРѕРЅС‚СЂРѕР»Р»РµСЂ РІРёР·СѓР°Р»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РЅР°СЃС‚СЂРѕРµРє РёРіСЂС‹
     /// </summary>
     private SettingsController _settingsController;
     public Button NewGameButton;
