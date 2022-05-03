@@ -4,8 +4,6 @@ namespace Assets.Scripts.Configuration
 {
     public static class DefaultGameConfiguration
     {
-        public static Vector3 StartPoint = new(-10, 0);
-        public static Vector3 FinishPoint = new(10, 0);
         /// <summary>
         /// Скорость
         /// </summary>

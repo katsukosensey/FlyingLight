@@ -64,8 +64,6 @@ namespace Assets.Scripts
 
         public void StartNewGame()
         {
-            StartPointObject.transform.position = DefaultGameConfiguration.StartPoint;
-            FinishPointObject.transform.position = DefaultGameConfiguration.FinishPoint;
             BallController.ResetPosition(StartPointObject.transform.position);
             Ball.SetActive(true);
             GameState = EGameState.Process;
