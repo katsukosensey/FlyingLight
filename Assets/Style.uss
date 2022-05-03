@@ -13,16 +13,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     min-height: 40px;
-    min-width: 200px;
+    min-width: 300px;
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=745036e99ce277547918c6d5ad97d919&type=3#NotInter-Regular');
     -unity-font-style: bold;
-    font-size: 15px;
+    font-size: 24px;
     align-items: stretch;
     justify-content: flex-start;
-    margin-left: 4px;
-    margin-right: 4px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-left: 11px;
+    margin-right: 11px;
+    margin-top: 11px;
+    margin-bottom: 11px;
 }
 
 .main-menu-btn-style:hover {
@@ -40,16 +40,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     min-height: 40px;
-    min-width: 200px;
+    min-width: 300px;
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=745036e99ce277547918c6d5ad97d919&type=3#NotInter-Regular');
     -unity-font-style: bold;
-    font-size: 15px;
+    font-size: 24px;
     align-items: stretch;
     justify-content: flex-start;
-    margin-left: 4px;
-    margin-right: 4px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-left: 11px;
+    margin-right: 11px;
+    margin-top: 11px;
+    margin-bottom: 11px;
 }
 
 .main-menu-btn-style:active {
@@ -67,16 +67,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     min-height: 40px;
-    min-width: 200px;
+    min-width: 300px;
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=745036e99ce277547918c6d5ad97d919&type=3#NotInter-Regular');
     -unity-font-style: bold;
-    font-size: 15px;
+    font-size: 24px;
     align-items: stretch;
     justify-content: flex-start;
-    margin-left: 4px;
-    margin-right: 4px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-left: 11px;
+    margin-right: 11px;
+    margin-top: 11px;
+    margin-bottom: 11px;
 }
 
 .close-btn-style {
@@ -84,8 +84,8 @@
     right: 8px;
     top: 8px;
     background-image: url('project://database/Assets/40+%20Simple%20Icons%20-%20Free/Cross_Simple_Icons_UI_colored.png?fileID=2800000&guid=454bf7d499f9d7541a376dc088d6129a&type=3#Cross_Simple_Icons_UI_colored');
-    width: 17px;
-    height: 17px;
+    width: 24px;
+    height: 24px;
     background-color: rgba(188, 188, 188, 0);
     border-left-width: 0;
     border-right-width: 0;
@@ -99,8 +99,8 @@
     right: 8px;
     top: 8px;
     background-image: url('project://database/Assets/40+%20Simple%20Icons%20-%20Free/Cross_Simple_Icons_UI_colored.png?fileID=2800000&guid=454bf7d499f9d7541a376dc088d6129a&type=3#Cross_Simple_Icons_UI_colored');
-    width: 17px;
-    height: 17px;
+    width: 24px;
+    height: 24px;
     background-color: rgba(188, 188, 188, 0);
     border-left-width: 0;
     border-right-width: 0;
@@ -114,8 +114,8 @@
     right: 8px;
     top: 8px;
     background-image: url('project://database/Assets/40+%20Simple%20Icons%20-%20Free/Cross_Simple_Icons_UI_colored.png?fileID=2800000&guid=454bf7d499f9d7541a376dc088d6129a&type=3#Cross_Simple_Icons_UI_colored');
-    width: 17px;
-    height: 17px;
+    width: 24px;
+    height: 24px;
     background-color: rgba(188, 188, 188, 0);
     border-left-width: 0;
     border-right-width: 0;
@@ -130,8 +130,8 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     background-color: rgba(188, 188, 188, 0);
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -142,12 +142,12 @@
     padding-bottom: 0;
     -unity-font: url('project://database/Assets/Math%20Symbols%20Normal.ttf?fileID=12800000&guid=ed034b66e17b06a43ab2c805191d0d98&type=3#Math Symbols Normal');
     -unity-font-definition: url('project://database/Assets/Math%20Symbols%20Normal%20SDF.asset?fileID=11400000&guid=7445d7efc3e98d34fb328cf3bed397d3&type=2#Math Symbols Normal SDF');
-    font-size: 24px;
+    font-size: 32px;
     -unity-font-style: bold;
-    border-left-color: rgba(110, 62, 67, 255);
-    border-right-color: rgba(110, 62, 67, 255);
-    border-top-color: rgba(110, 62, 67, 255);
-    border-bottom-color: rgba(110, 62, 67, 255);
+    border-left-color: rgb(110, 62, 67);
+    border-right-color: rgb(110, 62, 67);
+    border-top-color: rgb(110, 62, 67);
+    border-bottom-color: rgb(110, 62, 67);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -160,8 +160,8 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     background-color: rgb(254, 185, 69);
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -172,14 +172,14 @@
     padding-bottom: 0;
     -unity-font: url('project://database/Assets/Math%20Symbols%20Normal.ttf?fileID=12800000&guid=ed034b66e17b06a43ab2c805191d0d98&type=3#Math Symbols Normal');
     -unity-font-definition: url('project://database/Assets/Math%20Symbols%20Normal%20SDF.asset?fileID=11400000&guid=7445d7efc3e98d34fb328cf3bed397d3&type=2#Math Symbols Normal SDF');
-    font-size: 24px;
+    font-size: 32px;
     -unity-font-style: bold;
-    color: rgba(0, 0, 0, 255);
-    -unity-text-outline-color: rgba(0, 0, 0, 255);
-    border-left-color: rgba(144, 103, 107, 255);
-    border-right-color: rgba(144, 103, 107, 255);
-    border-top-color: rgba(144, 103, 107, 255);
-    border-bottom-color: rgba(144, 103, 107, 255);
+    color: rgb(0, 0, 0);
+    -unity-text-outline-color: rgb(0, 0, 0);
+    border-left-color: rgb(144, 103, 107);
+    border-right-color: rgb(144, 103, 107);
+    border-top-color: rgb(144, 103, 107);
+    border-bottom-color: rgb(144, 103, 107);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -192,8 +192,8 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     background-color: rgba(188, 188, 188, 0);
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -203,12 +203,12 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font: none;
-    font-size: 24px;
+    font-size: 32px;
     -unity-font-style: bold;
-    border-left-color: rgba(110, 62, 67, 255);
-    border-right-color: rgba(110, 62, 67, 255);
-    border-top-color: rgba(110, 62, 67, 255);
-    border-bottom-color: rgba(110, 62, 67, 255);
+    border-left-color: rgb(110, 62, 67);
+    border-right-color: rgb(110, 62, 67);
+    border-top-color: rgb(110, 62, 67);
+    border-bottom-color: rgb(110, 62, 67);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -221,8 +221,8 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     background-color: rgb(254, 185, 69);
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -232,13 +232,13 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font: none;
-    font-size: 24px;
+    font-size: 32px;
     -unity-font-style: bold;
-    color: rgba(0, 0, 0, 255);
-    border-left-color: rgba(144, 103, 107, 255);
-    border-right-color: rgba(144, 103, 107, 255);
-    border-top-color: rgba(144, 103, 107, 255);
-    border-bottom-color: rgba(144, 103, 107, 255);
+    color: rgb(0, 0, 0);
+    border-left-color: rgb(144, 103, 107);
+    border-right-color: rgb(144, 103, 107);
+    border-top-color: rgb(144, 103, 107);
+    border-bottom-color: rgb(144, 103, 107);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -246,23 +246,43 @@
 }
 
 .unity-base-slider__tracker {
-	background-color: rgb(110, 62, 67);
+    background-color: rgb(110, 62, 67);
 }
+
 .unity-base-slider__dragger {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     background-color: rgb(234, 150, 108);
-    border-left-width: 2px;
-    border-right-width: 2px;
-    border-top-width: 2px;
-    border-bottom-width: 2px;
-    border-left-color: rgba(110, 62, 67, 255);
-    border-right-color: rgba(110, 62, 67, 255);
-    border-top-color: rgba(110, 62, 67, 255);
-    border-bottom-color: rgba(110, 62, 67, 255);
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    margin-left: -8;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(110, 62, 67);
+    border-right-color: rgb(110, 62, 67);
+    border-top-color: rgb(110, 62, 67);
+    border-bottom-color: rgb(110, 62, 67);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: -12px;
+}
+
+.unity-base-slider__dragger:hover {
+    width: 24px;
+    height: 24px;
+    background-color: rgb(254, 185, 69);
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(110, 62, 67);
+    border-right-color: rgb(110, 62, 67);
+    border-top-color: rgb(110, 62, 67);
+    border-bottom-color: rgb(110, 62, 67);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: -12px;
 }

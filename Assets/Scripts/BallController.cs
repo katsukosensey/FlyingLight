@@ -28,12 +28,11 @@ public class BallController : MonoBehaviour
     public GameObject Top;
     public GameObject TopCheck;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _random = new Random();
+        _random = new Random(); 
         Speed = DefaultGameConfiguration.Speed;
-        _currentAcceleration = DefaultGameConfiguration.Acceleration;
+        _currentAcceleration = DefaultGameConfiguration.Acceleration; 
         MinAcceleration = DefaultGameConfiguration.MinAcceleration;
         Direction = DefaultGameConfiguration.Direction;
         SecureMouseDistance = DefaultGameConfiguration.SecureMouseDistance;
