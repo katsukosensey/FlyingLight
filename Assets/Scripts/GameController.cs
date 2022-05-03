@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Configuration;
 using Assets.Scripts.Model;
 using UnityEngine;
 
@@ -14,63 +15,65 @@ namespace Assets.Scripts
             set
             {
                 _gameState = value;
-                BallController.CanMove = _gameState == EGameState.Process;
+                BallController.UpdateMovingAbility(_gameState == EGameState.Process);
                 GameStateChanged?.Invoke();
             } 
         }
 
-        public BallController BallController;
+        public BallController BallController
+        {
+            get;
+            private set;
+        }
         public GameObject Ball;
         public GameObject StartPointObject;
         public GameObject FinishPointObject;
+        public FinishController FinishController;
         private EGameState _gameState;
 
         // Start is called before the first frame update
         void Start()
         {
+            if (Ball == null)
+            {
+                Debug.LogError("Reference of Ball gameobject not added to GameController");
+                return;
+            }
+            BallController = Ball.GetComponent<BallController>();
+            if (Ball == null)
+            {
+                Debug.LogError("Reference of BallController not added to Ball gameobject");
+                return;
+            }
+            if (StartPointObject == null)
+            {
+                Debug.LogWarning("Reference of Start gameobject not added to GameController");
+                return;
+            }
+            if (FinishPointObject == null)
+            {
+                Debug.LogWarning("Reference of Finish gameobject not added to GameController");
+                return;
+            }
+
+            FinishController.OnFinishedEvent += Finish;
+
             GameState = EGameState.None;
             Ball.SetActive(false);
         }
 
         public void StartNewGame()
         {
-            if (StartPointObject == null)
-            {
-                Debug.LogWarning("Отсутствует ссылка на объект старта");
-                return;
-            }
-            if (FinishPointObject == null)
-            {
-                Debug.LogWarning("Отсутствует ссылка на объект финиша");
-                return;
-            }
-
-            StartPointObject.transform.position = new Vector3(-10, 0);
-            FinishPointObject.transform.position = new Vector3(10,0);
+            StartPointObject.transform.position = DefaultGameConfiguration.StartPoint;
+            FinishPointObject.transform.position = DefaultGameConfiguration.FinishPoint;
             BallController.ResetPosition(StartPointObject.transform.position);
-            BallController.Reset();
             Ball.SetActive(true);
             GameState = EGameState.Process;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.Equals(Ball))
-            {
-                BallController.CanMove = false;
-                GameState = EGameState.Finished;
-                BallController.ResetPosition(FinishPointObject.transform.position);
-            }
-            else
-            {
-                Debug.Log($"{other.name} object triggered");
-            }
-        }
-
         public void Restart()
         {
-            GameState = EGameState.None;
-            BallController.CanMove = false;
+            Reset();
             StartNewGame();
         }
 
@@ -82,6 +85,17 @@ namespace Assets.Scripts
         public void Continue()
         {
             GameState = EGameState.Process;
+        }
+
+        public void Finish()
+        {
+            GameState = EGameState.Finished;
+            BallController.ResetPosition(FinishPointObject.transform.position);
+        }
+
+        public void Reset()
+        {
+            GameState = EGameState.None;
         }
 
     }

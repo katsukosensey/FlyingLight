@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Configuration;
 using UnityEngine;
 using Random = System.Random;
 
@@ -6,46 +7,55 @@ public class BallController : MonoBehaviour
 {
     private Random _random;
     private float _currentAcceleration;
-    public int Speed = 1;
-    public int DefaultAcceleration = 1;
-    public int MinAcceleration = 1;
-    public float AccelerationDelta = 0.1f;
-    public int SecureMouseDistance = 2;
-    public Vector2 Direction = Vector2.right;
+    /// <summary>
+    /// В процессе перестроения движения
+    /// </summary>
+    private bool _isAvoiding;
+    /// <summary>
+    /// Пойман курсором
+    /// </summary>
+    private bool _isCatchedByMouse;
+
+    private bool _canMove;
+
+    public int Speed;
+    public int MinAcceleration;
+    public int SecureMouseDistance;
+    public Vector2 Direction;
+
     public GameObject Bottom;
     public GameObject BottomCheck;
     public GameObject Top;
     public GameObject TopCheck;
-    
-    public bool CanMove;
-    /// <summary>
-    /// В процессе перестроения движения
-    /// </summary>
-    public bool IsAvoiding;
-    public bool CatchedByMouse;
 
     // Start is called before the first frame update
     void Start()
     {
         _random = new Random();
+        Speed = DefaultGameConfiguration.Speed;
+        _currentAcceleration = DefaultGameConfiguration.Acceleration;
+        MinAcceleration = DefaultGameConfiguration.MinAcceleration;
+        Direction = DefaultGameConfiguration.Direction;
+        SecureMouseDistance = DefaultGameConfiguration.SecureMouseDistance;
     }
 
     public void ResetPosition(Vector3 position)
     {
-        CanMove = false;
+        _canMove = false;
         transform.position = position;
         ResetTranslationParams();
+        Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsAvoiding)
+        if (_isAvoiding)
         {
             return;
         }
 
-        if (!CanMove)
+        if (!_canMove)
         {
             return;
         }
@@ -61,7 +71,7 @@ public class BallController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, Top.transform.position.y - 1);
         }
 
-        if (CatchedByMouse)
+        if (_isCatchedByMouse)
         {
             if (IsMouseDistanceSecure())
             {
@@ -71,7 +81,7 @@ public class BallController : MonoBehaviour
             }
             else
             {
-                _currentAcceleration+= AccelerationDelta;
+                _currentAcceleration+= DefaultGameConfiguration.AccelerationDelta;
             }
         }
 
@@ -81,34 +91,31 @@ public class BallController : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (!CanMove)
+        if (!_canMove)
         {
             return;
         }
 
-        if (IsAvoiding)
+        if (_isAvoiding)
         {
             return;
         }
-        IsAvoiding = true;
+        _isAvoiding = true;
         MoveByPush();
         AvoidEnemyMouse();
-        CatchedByMouse = true;
-        IsAvoiding = false;
-    }
-
-
-    void OnMouseExit()
-    {
+        _isCatchedByMouse = true;
+        _isAvoiding = false;
     }
 
     public void Move()
     {
-        //transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -10f, 10f), transform.position.z);
         var translation = Direction * Time.deltaTime * Speed * _currentAcceleration;
         transform.Translate(translation);
     }
-
+    /// <summary>
+    /// Проверка безопасности расстояния до курсора
+    /// </summary>
+    /// <returns></returns>
     public bool IsMouseDistanceSecure()
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -117,6 +124,9 @@ public class BallController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Отталкивание от объекта столкновения (курсор, граница)
+    /// </summary>
     void MoveByPush()
     {
         if (Speed > 0)
@@ -124,56 +134,71 @@ public class BallController : MonoBehaviour
             Speed *= -1;
         }
 
-        _currentAcceleration = 2;
+        _currentAcceleration = DefaultGameConfiguration.PushAcceleration;
         Move();
     }
+    /// <summary>
+    /// Перерасчет параметров движения от курсора 
+    /// </summary>
     public void AvoidEnemyMouse()
     {
         var coefY = _random.Next(0, 101) % 2 == 0 ? 1 : -1;
         var dirY = 2;
-        Direction = new Vector2(1, (float) (coefY* dirY));
+        Direction = new Vector2(1, coefY* dirY);
         Speed = Math.Abs(Speed);
         _currentAcceleration = MinAcceleration;
+    }
+    /// <summary>
+    /// Движение от границы
+    /// </summary>
+    public void AvoidBorder()
+    {
+        _currentAcceleration = MinAcceleration;
+        Move();
+        ResetTranslationParams();
+        _isAvoiding = false;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!CanMove)
+        if (!_canMove)
         {
             return;
         }
         if (other.gameObject.Equals(Bottom))
         {
-            IsAvoiding = true;
+            _isAvoiding = true;
             Direction = new Vector2(transform.position.x + 1, 0);
             Debug.LogError($"Caught bottom border");
         }
         if (other.gameObject.Equals(Top))
         {
-            IsAvoiding = true;
+            _isAvoiding = true;
             Direction = new Vector2(transform.position.x + 1, 0);
             Debug.LogError($"Caught top  border");
         }
 
-        if (IsAvoiding)
+        if (_isAvoiding)
         {
-            _currentAcceleration = MinAcceleration;
-            Move();
-            ResetTranslationParams();
-            IsAvoiding = false;
+            AvoidBorder();
         }
+    }
+
+    public void UpdateMovingAbility(bool canMove)
+    {
+        _canMove = canMove;
     }
 
 
     public void ResetTranslationParams()
     {
-        Direction = Vector2.right;
-        _currentAcceleration = DefaultAcceleration;
+        Direction = DefaultGameConfiguration.Direction;
+        _currentAcceleration = DefaultGameConfiguration.Acceleration;
     }
 
     public void Reset()
     {
-        CatchedByMouse = false;
+        _isCatchedByMouse = false;
     }
 }

@@ -1,66 +1,44 @@
 using Assets.Scripts;
 using Assets.Scripts.Model;
+using Assets.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UiController : MonoBehaviour
 {
-    private VisualElement root;
+    private VisualElement _uiRoot;
+    /// <summary>
+    /// Контроллер визуальных элементов настроек игры
+    /// </summary>
+    private SettingsController _settingsController;
     public Button NewGameButton;
     public Button ContinueButton;
     public Button CloseButton;
     public Label FinishLabel;
-    public SliderInt speedSlider;
-    public SliderInt accelerationSlider;
-    public SliderInt mouseZoneSlider;
 
     public GameController GameController;
     // Start is called before the first frame update
     void Start()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
-        if (root == null)
+        _uiRoot = GetComponent<UIDocument>().rootVisualElement;
+        if (_uiRoot == null)
         {
-            Debug.Log("Root Visual Element is not added");
+            Debug.LogError("Root Visual Element is not added");
             return;
         }
-        NewGameButton = root.Q<Button>("new-game-btn");
-        ContinueButton = root.Q<Button>("continue-btn");
-        CloseButton = root.Q<Button>("close-btn");
-        FinishLabel = root.Q<Label>("finish-title");
+        NewGameButton = _uiRoot.Q<Button>("new-game-btn");
+        ContinueButton = _uiRoot.Q<Button>("continue-btn");
+        CloseButton = _uiRoot.Q<Button>("close-btn");
+        FinishLabel = _uiRoot.Q<Label>("finish-title");
         NewGameButton.clicked += OnNewGamePressed;
         ContinueButton.clicked += OnContinuePressed;
         CloseButton.clicked += OnClosePressed;
         GameController.GameStateChanged += UpdateControlsConfiguration;
-        var speedBtn = root.Q<Button>("speed-btn");
-        var accelerationBtn = root.Q<Button>("accel-btn");
-        var mouseZoneBtn = root.Q<Button>("mouse-zone-btn");
-        speedSlider = root.Q<SliderInt>("speed-slider");
-        accelerationSlider = root.Q<SliderInt>("accel-slider");
-        mouseZoneSlider = root.Q<SliderInt>("mouse-zone-slider");
-        var mainContainer = root.Q<VisualElement>("main-container");
-        HideSettingsSliders();
-        speedBtn.RegisterCallback<MouseOverEvent>(evt => speedSlider.visible = true);
-        accelerationBtn.RegisterCallback<MouseOverEvent>(evt => accelerationSlider.visible = true);
-        mouseZoneBtn.RegisterCallback<MouseOverEvent>(evt => mouseZoneSlider.visible = true);
-        speedSlider.RegisterValueChangedCallback(x=>GameController.BallController.Speed = x.newValue);
-        accelerationSlider.RegisterValueChangedCallback(x => GameController.BallController.MinAcceleration = x.newValue);
-        mouseZoneSlider.RegisterValueChangedCallback(x => GameController.BallController.SecureMouseDistance = x.newValue);
-
-        mainContainer.RegisterCallback<MouseUpEvent>(evt => HideSettingsSliders());
+        UpdateControlsConfiguration();
+        _settingsController = new SettingsController(GameController, _uiRoot);
     }
 
-    void HideSettingsSliders()
-    {
-        speedSlider.visible = false;
-        accelerationSlider.visible = false;
-        mouseZoneSlider.visible = false;
-    }
-
-    public void DisplaySlider(SliderInt slider)
-    {
-        slider.visible = !slider.visible;
-    }
+    
 
     void UpdateControlsConfiguration()
     {
@@ -68,35 +46,34 @@ public class UiController : MonoBehaviour
         ContinueButton.visible = GameController.GameState == EGameState.Pause;
         if (GameController.GameState == EGameState.Finished)
         {
-            root.visible = true;
+            _uiRoot.visible = true;
         }
     }
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (root.visible)
+            if (_uiRoot.visible)
             {
-                GameController.Continue();
-                HideSettingsSliders();
+                OnContinuePressed();
             }
             else
             {
                 GameController.Pause();
+                _uiRoot.visible = true;
             }
-            root.visible = !root.visible;
         }
     }
     public void OnNewGamePressed()
     {
-        root.visible = false;
-        HideSettingsSliders();
+        _uiRoot.visible = false;
+        _settingsController.HideSettingsSliders();
         GameController.Restart();
     }
     public void OnContinuePressed()
     {
-        root.visible = false;
-        HideSettingsSliders();
+        _uiRoot.visible = false;
+        _settingsController.HideSettingsSliders();
         GameController.Continue();
     }
 

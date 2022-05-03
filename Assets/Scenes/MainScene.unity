@@ -1078,13 +1078,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 438554165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afb327d93b3547f4a97d6445c84f4100, type: 3}
+  m_Script: {fileID: 11500000, guid: c515dec9569dda7468b2df845e2899e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallController: {fileID: 814124040}
   Ball: {fileID: 814124037}
-  StartPointObject: {fileID: 1148059124}
-  FinishPointObject: {fileID: 438554165}
 --- !u!1001 &454618008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1232,6 +1229,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1305,6 +1303,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb327d93b3547f4a97d6445c84f4100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ball: {fileID: 814124037}
+  StartPointObject: {fileID: 1148059124}
+  FinishPointObject: {fileID: 438554165}
+  FinishController: {fileID: 438554170}
 --- !u!1001 &546506509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1825,18 +1839,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  DefaultAcceleration: 1
   MinAcceleration: 1
-  AccelerationDelta: 0.001
   SecureMouseDistance: 4
   Direction: {x: 1, y: 0}
   Bottom: {fileID: 360283325}
   BottomCheck: {fileID: 850012485}
   Top: {fileID: 1770611009}
   TopCheck: {fileID: 1320661020}
-  CanMove: 0
-  IsAvoiding: 0
-  CatchedByMouse: 0
 --- !u!23 &814124042
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2038,7 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101a99672c475bb4e8fcfa41e0156883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameController: {fileID: 438554170}
+  GameController: {fileID: 519420033}
 --- !u!1001 &908713010
 PrefabInstance:
   m_ObjectHideFlags: 0
